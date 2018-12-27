@@ -3,11 +3,14 @@
   "version": "0.0.1",
   "description": "",
   "dependencies": {
+    "await-stream-ready": "^1.0.1",
     "droplr-api": "^1.0.0",
     "egg": "^2.2.1",
     "egg-scripts": "^2.5.0",
+    "file-type": "^10.7.0",
     "moment": "^2.23.0",
     "node-telegram-bot-api": "^0.30.0",
+    "read-chunk": "^3.0.0",
     "uuid": "^3.3.2",
     "validator": "^10.10.0"
   },

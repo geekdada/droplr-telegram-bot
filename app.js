@@ -3,7 +3,11 @@
 const TelegramBot = require('node-telegram-bot-api');
 const Droplr = require('droplr-api');
 const assert = require('assert');
-const onMessage = require('./lib/on-message');
+const onText = require('./lib/on-text');
+const onPicture = require('./lib/on-picture');
+const onVideo = require('./lib/on-video');
+const onAudio = require('./lib/on-audio');
+const onDocument = require('./lib/on-document');
 
 module.exports = app => {
   const config = app.config.bot;
@@ -19,8 +23,36 @@ module.exports = app => {
     await bot.setWebHook(`${config.baseUri}/bot${config.botToken}`);
     app.telegramBot = bot;
 
-    bot.on('message', msg => {
-      onMessage(msg, app, bot)
+    bot.on('text', msg => {
+      onText(msg, app, bot)
+        .catch(err => {
+          app.emit('error', err);
+        });
+    });
+
+    bot.on('photo', msg => {
+      onPicture(msg, app, bot)
+        .catch(err => {
+          app.emit('error', err);
+        });
+    });
+
+    bot.on('video', msg => {
+      onVideo(msg, app, bot)
+        .catch(err => {
+          app.emit('error', err);
+        });
+    });
+
+    bot.on('audio', msg => {
+      onAudio(msg, app, bot)
+        .catch(err => {
+          app.emit('error', err);
+        });
+    });
+
+    bot.on('document', msg => {
+      onDocument(msg, app, bot)
         .catch(err => {
           app.emit('error', err);
         });
@@ -41,7 +73,11 @@ module.exports = app => {
 
       app.droplr = droplr;
     } catch (err) {
-      app.logger.error('Login Droplr failed!');
+      const e = new Error('Login to Droplr failed!');
+      app.logger.error(e);
+      throw e;
     }
+
+    app.logger.info('Application is ready to take messages!');
   });
 };
