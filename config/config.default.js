@@ -14,7 +14,7 @@ module.exports = appInfo => {
   };
 
   config.bot = {
-    baseUri: 'https://frp1.hosts.dada.li',
+    baseUri: process.env.BASE_URI,
     botToken: process.env.BOT_TOKEN,
     droplrUsername: process.env.DROPLR_USERNAME,
     droplrPassword: process.env.DROPLR_PASSWORD,

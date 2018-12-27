@@ -12,6 +12,7 @@ const onDocument = require('./lib/on-document');
 module.exports = app => {
   const config = app.config.bot;
 
+  assert(config.baseUri, 'Invalid baseUri');
   assert(config.botToken, 'Invalid botToken');
   assert(config.droplrUsername, 'Invalid droplrUsername');
   assert(config.droplrPassword, 'Invalid droplrPassword');
