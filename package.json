@@ -2,7 +2,15 @@
   "name": "droplr-telegram-bot",
   "version": "0.0.1",
   "description": "",
-  "dependencies": {},
+  "dependencies": {
+    "droplr-api": "^1.0.0",
+    "egg": "^2.2.1",
+    "egg-scripts": "^2.5.0",
+    "moment": "^2.23.0",
+    "node-telegram-bot-api": "^0.30.0",
+    "uuid": "^3.3.2",
+    "validator": "^10.10.0"
+  },
   "devDependencies": {
     "egg-bin": "^4.3.7",
     "egg-ci": "^1.8.0",
@@ -10,16 +18,17 @@
     "eslint-config-egg": "^7.0.0"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": "^8.0.0"
   },
   "scripts": {
-    "autod": "autod",
+    "start": "node ./index.js",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
     "lint": "eslint .",
     "test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
     "test-local": "egg-bin test",
     "cov": "egg-bin cov",
-    "ci": "npm run lint && egg-bin pkgfiles --check && npm run cov",
-    "pkgfiles": "egg-bin pkgfiles"
+    "ci": "npm run lint && npm run cov"
   },
   "ci": {
     "version": "8"
