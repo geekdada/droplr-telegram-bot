@@ -2,8 +2,7 @@
   "name": "droplr-telegram-bot",
   "version": "0.0.1",
   "description": "",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "egg-bin": "^4.3.7",
     "egg-ci": "^1.8.0",
@@ -25,7 +24,10 @@
   "ci": {
     "version": "8"
   },
-  "eslintIgnore": [ "coverage", "dist" ],
+  "eslintIgnore": [
+    "coverage",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": ""
