@@ -1,3 +1,20 @@
+# [1.2.0](https://github.com/geekdada/droplr-telegram-bot/compare/v1.1.0...v1.2.0) (2018-12-30)
+
+
+### Bug Fixes
+
+* URL shorten broken ([d1d55b3](https://github.com/geekdada/droplr-telegram-bot/commit/d1d55b3))
+
+
+### Features
+
+* add preview link to html drops ([b8f6900](https://github.com/geekdada/droplr-telegram-bot/commit/b8f6900))
+* add preview link to markdown drops ([0240e59](https://github.com/geekdada/droplr-telegram-bot/commit/0240e59))
+* auto linking for markdown ([0b97f1e](https://github.com/geekdada/droplr-telegram-bot/commit/0b97f1e))
+* md to html api ([25657a1](https://github.com/geekdada/droplr-telegram-bot/commit/25657a1))
+
+
+
 # [1.1.0](https://github.com/geekdada/droplr-telegram-bot/compare/v1.0.0...v1.1.0) (2018-12-30)
 
 
