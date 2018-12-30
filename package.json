@@ -19,6 +19,7 @@
     "rehype-document": "^3.0.0",
     "rehype-stringify": "^5.0.0",
     "remark": "^10.0.1",
+    "remark-highlight.js": "^5.1.0",
     "remark-html": "^9.0.0",
     "remark-parse": "^6.0.3",
     "remark-rehype": "^4.0.0",
@@ -60,7 +61,8 @@
   },
   "eslintIgnore": [
     "coverage",
-    "dist"
+    "dist",
+    "app/public"
   ],
   "repository": {
     "type": "git",

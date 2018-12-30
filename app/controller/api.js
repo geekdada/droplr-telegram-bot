@@ -31,6 +31,7 @@ module.exports = app => {
         return;
       }
 
+      ctx.set('cache-control', 'public, max-age=86400');
       ctx.set('content-type', contentType);
       ctx.body = fileStream;
     }
