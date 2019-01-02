@@ -21,13 +21,19 @@ module.exports = app => {
         responseType: 'stream',
         proxy: false,
         headers: {
-          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+          'User-Agent': ctx.get('user-agent') || 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+          Accept: ctx.get('Accept') || '',
+          Referer: ctx.get('Referer') || '',
         },
+        timeout: 3000,
       });
       const fileStream = response.data;
-      const contentType = response.headers['content-type'];
+      const contentType = response.headers['content-type'] || '';
 
-      if (!contentType || !contentType.startsWith('text/html')) {
+      if (
+        !contentType.startsWith('text/html') &&
+        !contentType.startsWith('text/plain')
+      ) {
         ctx.throw(400);
         return;
       }
@@ -51,12 +57,19 @@ module.exports = app => {
         url,
         proxy: false,
         headers: {
-          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+          'User-Agent': ctx.get('user-agent') || 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+          Accept: ctx.get('Accept') || '',
+          Referer: ctx.get('Referer') || '',
         },
+        timeout: 3000,
       });
       const contentType = response.headers['content-type'] || '';
 
-      if (!contentType.startsWith('text/markdown') && !contentType.startsWith('text/plain') && !contentType.startsWith('application/octet-stream')) {
+      if (
+        !contentType.startsWith('text/markdown') &&
+        !contentType.startsWith('text/plain') &&
+        !contentType.startsWith('application/octet-stream') // Some requests may throw this content type
+      ) {
         ctx.throw(400);
         return;
       }
