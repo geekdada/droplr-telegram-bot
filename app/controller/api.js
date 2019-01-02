@@ -39,7 +39,7 @@ module.exports = app => {
       }
 
       ctx.set('cache-control', 'public, max-age=86400');
-      ctx.set('content-type', contentType);
+      ctx.set('content-type', 'text/html; charset=utf-8');
       ctx.body = fileStream;
     }
 
