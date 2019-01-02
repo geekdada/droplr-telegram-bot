@@ -42,5 +42,9 @@ module.exports = appInfo => {
     },
   };
 
+  config.axios = {
+    timeout: 60000,
+  };
+
   return config;
 };

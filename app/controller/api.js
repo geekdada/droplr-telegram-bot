@@ -15,18 +15,28 @@ module.exports = app => {
         return;
       }
 
-      const response = await axios({
-        method: 'get',
-        url,
-        responseType: 'stream',
-        proxy: false,
-        headers: {
-          'User-Agent': ctx.get('user-agent') || 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
-          Accept: ctx.get('Accept') || '',
-          Referer: ctx.get('Referer') || '',
-        },
-        timeout: 3000,
-      });
+      let response;
+
+      try {
+        response = await axios({
+          method: 'get',
+          url,
+          responseType: 'stream',
+          proxy: false,
+          headers: {
+            'User-Agent': ctx.get('User-Agent') || 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+            Accept: ctx.get('Accept') || '',
+          },
+          ...ctx.app.config.axios,
+        });
+      } catch (err) {
+        if (err.response.status >= 400 && err.response.status < 500) {
+          ctx.throw(err.response.status);
+          return;
+        }
+        throw err;
+      }
+
       const fileStream = response.data;
       const contentType = response.headers['content-type'] || '';
 
@@ -52,17 +62,27 @@ module.exports = app => {
         return;
       }
 
-      const response = await axios({
-        method: 'get',
-        url,
-        proxy: false,
-        headers: {
-          'User-Agent': ctx.get('user-agent') || 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
-          Accept: ctx.get('Accept') || '',
-          Referer: ctx.get('Referer') || '',
-        },
-        timeout: 3000,
-      });
+      let response;
+
+      try {
+        response = await axios({
+          method: 'get',
+          url,
+          proxy: false,
+          headers: {
+            'User-Agent': ctx.get('User-Agent') || 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+            Accept: ctx.get('Accept') || '',
+          },
+          ...ctx.app.config.axios,
+        });
+      } catch (err) {
+        if (err.response.status >= 400 && err.response.status < 500) {
+          ctx.throw(err.response.status);
+          return;
+        }
+        throw err;
+      }
+
       const contentType = response.headers['content-type'] || '';
 
       if (
