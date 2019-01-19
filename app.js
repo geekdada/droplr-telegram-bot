@@ -1,9 +1,10 @@
 'use strict';
 
-const TelegramBot = require('node-telegram-bot-api');
 const Promise = require('bluebird');
+const TelegramBot = require('node-telegram-bot-api');
 const Droplr = require('droplr-api');
 const assert = require('assert');
+
 const onText = require('./lib/on-text');
 const onPicture = require('./lib/on-picture');
 const onVideo = require('./lib/on-video');
@@ -32,7 +33,7 @@ module.exports = app => {
     // Telegram
     const bot = new TelegramBot(config.botToken);
 
-    await bot.setWebHook(`${config.baseUri}/bot${config.botToken}`);
+    // await bot.setWebHook(`${config.baseUri}/bot${config.botToken}`);
     app.bot = bot;
 
     bot.on('text', msg => {
@@ -75,9 +76,9 @@ module.exports = app => {
         config.droplrPassword
       ),
     });
+
     try {
       await droplr.drops.list();
-
       app.droplr = droplr;
     } catch (err) {
       const e = new Error('Login to Droplr failed!');

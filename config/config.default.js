@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+require('env2')(path.resolve(__dirname, '../.env'));
 
 module.exports = appInfo => {
   const config = {};
@@ -26,6 +27,7 @@ module.exports = appInfo => {
     droplrPassword: process.env.DROPLR_PASSWORD,
     isPublic: process.env.BOT_PUBLIC === '1',
     botMaster: process.env.BOT_MASTER,
+    mercuryApiKey: process.env.MERCURY_API_KEY,
   };
 
   config.development = {
@@ -44,6 +46,13 @@ module.exports = appInfo => {
 
   config.axios = {
     timeout: 60000,
+  };
+
+  config.view = {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.nj': 'nunjucks',
+    },
   };
 
   return config;

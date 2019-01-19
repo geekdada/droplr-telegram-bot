@@ -10,4 +10,5 @@ module.exports = app => {
 
   router.get('/html', controller.api.html);
   router.get('/md', controller.api.markdown);
+  router.get(/^\/reader\/(.*)/, controller.reader.api);
 };
