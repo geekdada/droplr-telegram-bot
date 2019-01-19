@@ -52,7 +52,8 @@
     "node": "^8.0.0"
   },
   "scripts": {
-    "start": "eggctl start",
+    "start": "eggctl start --daemon",
+    "stop": "eggctl stop",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
     "lint": "eslint .",
