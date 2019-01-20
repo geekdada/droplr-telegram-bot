@@ -33,7 +33,7 @@ module.exports = app => {
     // Telegram
     const bot = new TelegramBot(config.botToken);
 
-    // await bot.setWebHook(`${config.baseUri}/bot${config.botToken}`);
+    await bot.setWebHook(`${config.baseUri}/bot${config.botToken}`);
     app.bot = bot;
 
     bot.on('text', msg => {
