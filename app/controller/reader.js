@@ -11,9 +11,14 @@ module.exports = app => {
   return class ReaderController extends app.Controller {
     async api() {
       const { ctx } = this;
+      let originUrl = ctx.params[0];
+
+      originUrl = originUrl.replace(/^https?:\/(?!\/)/, match => {
+        return match + '/'; // Cloudflare may format the path
+      });
 
       try {
-        assert(validator.isURL(ctx.params[0]), 'Invalid url');
+        assert(validator.isURL(originUrl), 'Invalid url');
       } catch (error) {
         ctx.throw(422, 'Validation Failed', {
           code: 'invalid_param',
@@ -21,7 +26,7 @@ module.exports = app => {
         });
       }
 
-      const originUrl = url.parse(ctx.params[0]);
+      originUrl = url.parse(originUrl);
       originUrl.query = ctx.query;
 
       const parseResult = await this.parse(url.format(originUrl));
@@ -81,6 +86,7 @@ module.exports = app => {
             tagName: 'img',
             properties: {
               'data-src': src,
+              'data-zoomable': '',
               className: [ 'lazyload' ],
             },
           };
