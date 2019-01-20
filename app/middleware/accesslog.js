@@ -31,20 +31,16 @@ module.exports = function accesslogMiddleware(options) {
     const isSkip = skipExt.indexOf(ext) !== -1 && ctx.status < 400;
 
     if (!isSkip) {
-      const ip = ctx.get('x-real-ip') || ctx.ip;
-      const port = ctx.get('x-real-port') || '-';
       const protocol = ctx.protocol.toUpperCase();
-      const method = ctx.method;
-      const url = ctx.url;
       const version = ctx.req.httpVersionMajor + '.' + ctx.req.httpVersionMinor;
       const status = ctx.status;
       const contentLength = ctx.length || '-';
       const referrer = ctx.get('referrer') || '-';
       const ua = ctx.get('user-agent') || '-';
-      const message = util.format('[%s:%s] %s %s %s/%s %s %sB "%s" "%s" %sms %s',
-        ip, port, method, url, protocol, version, status, contentLength, referrer, ua, responseTime, requestId);
+      const message = util.format('%s/%s %s %sB "%s" "%s" %sms %s',
+        protocol, version, status, contentLength, referrer, ua, responseTime, requestId);
 
-      ctx.app.logger.info('[access]', message);
+      ctx.logger.info(message);
     }
   };
 };
