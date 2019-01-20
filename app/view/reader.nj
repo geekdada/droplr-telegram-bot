@@ -18,7 +18,7 @@
 
       body > .title {
         max-width: 45rem;
-        margin: 0 auto 2rem;
+        margin: 0 auto 0.5rem;
       }
 
       body > .content {
@@ -34,6 +34,9 @@
     </h1>
 
     <article class="content">
+      <p style="margin-bottom: 1.5rem">
+        <small><a href="{{ originUrl }}">原文地址</a></small>
+      </p>
       {{ body | safe }}
     </article>
 

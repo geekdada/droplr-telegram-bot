@@ -30,11 +30,17 @@ module.exports = app => {
       originUrl.query = ctx.query;
 
       const parseResult = await this.parse(url.format(originUrl));
+
+      if (!parseResult.content) {
+        return ctx.throw(404);
+      }
+
       const body = await this.replaceImage(parseResult.content);
 
       await ctx.render('reader.nj', {
         title: parseResult.title || 'Parsed content',
         body,
+        originUrl: url.format(originUrl),
       });
     }
 
