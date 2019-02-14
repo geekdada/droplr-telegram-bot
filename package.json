@@ -14,7 +14,7 @@
     "env2": "^2.2.2",
     "file-type": "^10.7.0",
     "get-stream": "^4.1.0",
-    "handlebars": "^4.0.12",
+    "handlebars": "^4.0.13",
     "hast-util-is-element": "^1.0.2",
     "moment": "^2.23.0",
     "node-telegram-bot-api": "^0.30.0",
