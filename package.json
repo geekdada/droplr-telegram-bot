@@ -52,7 +52,7 @@
     "node": "^10.0.0"
   },
   "scripts": {
-    "start": "eggctl start --daemon",
+    "start": "eggctl start",
     "stop": "eggctl stop",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
