@@ -8,3 +8,4 @@ run/
 *.swp
 .nyc_output
 .env
+pm2.config.js
