@@ -34,7 +34,8 @@
     "unified": "^7.1.0",
     "unist-util-visit": "^1.4.0",
     "uuid": "^3.3.2",
-    "validator": "^10.10.0"
+    "validator": "^10.10.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "conventional-changelog-cli": "^2.0.11",
@@ -63,7 +64,9 @@
     "ci": "npm run lint && npm run cov",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "pub": "np --no-yarn --no-publish --no-cleanup --any-branch",
-    "version": "npm run changelog && git add ."
+    "version": "npm run changelog && git add .",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "ci": {
     "version": "10"
@@ -86,5 +89,6 @@
     "hooks": {
       "pre-commit": "npm-debug-log-cleaner && lint-staged"
     }
-  }
+  },
+  "snyk": true
 }
