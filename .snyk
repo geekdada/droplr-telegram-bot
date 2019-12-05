@@ -1,0 +1,22 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.14.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-AXIOS-174505:
+    - droplr-api > axios:
+        patched: '2019-12-05T02:38:24.008Z'
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - egg > urllib > proxy-agent > https-proxy-agent:
+        patched: '2019-12-05T02:38:24.008Z'
+    - egg > urllib > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2019-12-05T02:38:24.008Z'
+    - egg > @types/urllib > urllib > proxy-agent > https-proxy-agent:
+        patched: '2019-12-05T02:38:24.008Z'
+    - egg > @types/urllib > urllib > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2019-12-05T02:38:24.008Z'
+  SNYK-JS-LODASH-450202:
+    - droplr-api > lodash:
+        patched: '2019-12-05T02:38:24.008Z'
+    - node-telegram-bot-api > request-promise > request-promise-core > lodash:
+        patched: '2019-12-05T02:38:24.008Z'
