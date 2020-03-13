@@ -27,7 +27,6 @@ module.exports = appInfo => {
     droplrPassword: process.env.DROPLR_PASSWORD,
     isPublic: process.env.BOT_PUBLIC === '1',
     botMaster: process.env.BOT_MASTER,
-    mercuryApiKey: process.env.MERCURY_API_KEY,
   };
 
   config.development = {
