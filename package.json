@@ -29,10 +29,10 @@
     "remark-rehype": "^5.0.0",
     "remark-slug": "^5.1.1",
     "remark-toc": "^7.0.0",
+    "snyk": "^1.421.1",
     "unified": "^8.4.2",
     "uuid": "^7.0.2",
-    "validator": "^12.2.0",
-    "snyk": "^1.421.1"
+    "validator": "^12.2.0"
   },
   "devDependencies": {
     "conventional-changelog-cli": "^2.0.11",
@@ -42,11 +42,10 @@
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
     "np": "^6.2.0",
-    "npm-debug-log-cleaner": "^1.0.3",
-    "remark-cli": "^7.0.1"
+    "npm-debug-log-cleaner": "^1.0.3"
   },
   "engines": {
-    "node": "^10.0.0"
+    "node": ">=10.0.0"
   },
   "scripts": {
     "start": "eggctl start",
@@ -63,9 +62,6 @@
     "version": "npm run changelog && git add .",
     "snyk-protect": "snyk protect",
     "prepare": "yarn run snyk-protect"
-  },
-  "ci": {
-    "version": "10"
   },
   "eslintIgnore": [
     "coverage",
