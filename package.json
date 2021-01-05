@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "description": "",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bluebird": "^3.5.3",
     "boom": "^7.3.0",
     "droplr-api": "^1.0.0",
